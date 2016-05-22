@@ -1,0 +1,30 @@
+Alunos:
+    Artur Bersan - 140016813
+    Gabriel Silva - 120011727
+    Marcelo Ferreira - 140056688
+
+Exercício 1
+    Para executar o código do exercício 1 é necessário:
+        * ter o python3 instalado
+        * ter um arquivo password.txt ( que contem a chave com 8 caracteres)
+        * ter os arquivos do código fonte:
+            + des.py
+            + substitution_tables.py
+
+    Para executar o código no linux basta digitar no terminal:
+        $ python3 des.py
+
+    Em seguida insira:
+        * nome do arquivo que contém o texto a ser processado
+        * escolha a opção:
+            + e - encriptografar o texto
+            + d - descriptografar o texto
+
+    O arquivo de saída será indicado ao final da execução do programa.
+
+Exercício 2
+    Basta compilar utilizando g++ e em seguida executar o arquivo gerado
+
+Exercício 3
+    Compilar usando o g++ e sem seguida executar o arquivo gerado.
+    Seguir as instruções descritas
