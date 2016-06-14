@@ -1,18 +1,19 @@
 import random
 def miller_rabin(n,t):
     prime = True
+    # Verify odd
     if n&1:
         k,q = determine_k_q(n)
- #       print(q)
-  #      print(k)
         list_a = []
+# Validate the number of tests with the size of number fill with all possible numbers if t>n
         if t>n-2:
-            list_a = range(2,n)
+            list_a = range(2,n) 
         else:
-            list_a = random.sample(range(2,n),t)
-   #     print(list_a)
+            list_a = random.sample(range(2,n),t) 
+
+# Make the verifications
         count_t = 0
-        while count_t < t and prime:
+        while count_t < len(list_a) and prime:
             a = list_a[count_t]
             prime = verify_a(a,n,k,q)
             count_t += 1
@@ -22,10 +23,10 @@ def miller_rabin(n,t):
 
 def verify_a(a,n,k,q):
     prime = False
-    x = pow(a,q,n)
+    x = pow(a,q,n) # (a^q) mod n
     if x != 1 and x != n-1:
         j = 0
-        while j<k and not prime:
+        while j<k and not prime: # (a^(q*2^j)) mod n
             x = pow(x,2,n)
             if x != n-1:
                 j+=1
@@ -38,12 +39,13 @@ def verify_a(a,n,k,q):
 def determine_k_q(n):
     k = 0
     q = n-1
-    while not q&1:
+    while not q&1: # find the multiple in base 2, since 2^q+k = n-1
         k,q = k+1, q>>1
     return k,q
+
 if __name__ == "__main__":
-    number = int(input("Number n"))
-    interation = int(input("Number k"))
+    number = int(input("Enter number to determine primality (n): "))
+    interation = int(input("Enter the number of times to execute test (k): "))
     if miller_rabin(number,interation):
         print("prime with probability %.6f to not be prime" % (1/4)**interation)
     else:
