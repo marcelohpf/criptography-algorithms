@@ -1,6 +1,7 @@
 # Extend algorithm of euclids interative
-def euclids(a,b):
-
+def extend_euclids(a,b):
+    if b>a: 
+        a,b = b,a
     r = [a,b] 
     s = [1,0] # alpha value
     t = [0,1] # beta value
@@ -19,17 +20,19 @@ def euclids(a,b):
         t[0]=t[1]
         t[1]=tt # update the value of beta
     
-    if(r[1] == 1):
-        print("alpha: %d beta: %d" % ( s[1],t[1]))
-    else:
-        print("a,b are not relative prime")
-
-
+    relative_prime = (r[1],t[1])
+    return relative_prime
 
 if __name__ == "__main__":
     try:
-        a = int(input("Enter with value a"\n))
+        a = int(input("Enter with value a\n"))
         b  = int(input("Enter with value b\n"))
-        euclids(a,b)
+        rest,inverse_multiplicative = extend_euclids(a,b)
+        if rest == 1:
+            print("Relative prime %d %d" % (a,b))
+            print("")
+        else:
+            print("%d is not relative prime to %d" % (a,b))
+            
     except ValueError as e:
         print("Invalid value")

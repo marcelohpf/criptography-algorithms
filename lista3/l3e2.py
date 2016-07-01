@@ -4,17 +4,10 @@ def miller_rabin(n,t):
     # Verify odd
     if n&1:
         k,q = determine_k_q(n)
-        list_a = []
-# Validate the number of tests with the size of number fill with all possible numbers if t>n
-        if t>n-2:
-            list_a = range(2,n) 
-        else:
-            list_a = random.sample(range(2,n),t) 
-
-# Make the verifications
+        # Make the verifications
         count_t = 0
-        while count_t < len(list_a) and prime:
-            a = list_a[count_t]
+        while count_t < t and prime:
+            a = random.randrange(2,n-1)
             prime = verify_a(a,n,k,q)
             count_t += 1
     else:
