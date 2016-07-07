@@ -103,24 +103,28 @@ def define_order(point,a,p):
         order+=1
     return order
 
-if __name__ == "__main__":
-    try:
+def input_abp():
+    a = int(input("A value\n"))
+    b = int(input("B value\n"))
+    p = int(input("P value\n"))
+    while not validate_input(a,b,p): 
+        print("invalid A and B") 
         a = int(input("A value\n"))
         b = int(input("B value\n"))
         p = int(input("P value\n"))
-        
-        if validate_input(a,b,p): 
-            print("The inputs are valid ok")
+    return (a,b,p)
 
-            points = find_all_points(a,b,p)
-            orders = [ define_order(point,a,p) for point in points]
-            order_points = [ value for value in zip(orders,points)]
-            order_points.sort()
-            print("order, (X,Y)")
-            for point in order_points:
-                print(point)
-            print("Point sugest: {}".format(order_points[-1]))
-        else: 
-            print("invalid A and B") 
-    except:
-        print("Error")
+if __name__ == "__main__":
+    
+    a,b,p = input_abp()
+    print("The inputs are valid ok")
+
+    points = find_all_points(a,b,p)
+    orders = [ define_order(point,a,p) for point in points]
+    order_points = [ value for value in zip(orders,points)]
+    order_points.sort()
+    print("order, (X,Y)")
+    for point in order_points:
+        print(point)
+    print("Point sugest: {}".format(order_points[-1]))
+        
