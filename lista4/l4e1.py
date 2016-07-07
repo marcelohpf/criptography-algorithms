@@ -1,6 +1,6 @@
 import sys,os
 print("importing miller_rabin and extended algorithm from lista1 and lista 3")
-sys.path.append(os.path.abspath("../"))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from lista3.l3e2 import miller_rabin
 from lista1.l1e2 import extend_euclids
@@ -36,13 +36,10 @@ def input_pqe():
         e = int(input("enter with public key number"))
         # e = 1 mod (p-1 * q-1), d = e^-1 mod (p-1 * q-1)
         rest,d = extend_euclids(e,fi_n)
-    d = process_inverse(d,fi_n)
+    print("keys (pri,pub): (%d,%d)" %(d,e))
+    d %= fi_n # Transform in positive if d is negative
     return (p*q,e,d)
 
-def process_inverse(d,fi_n):
-    while(d<0):
-        d+=fi_n
-    return d
 if __name__ == '__main__':
     values = input_pqe()
     name = input("name file with the data")
