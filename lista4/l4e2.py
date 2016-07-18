@@ -127,4 +127,5 @@ if __name__ == "__main__":
     for point in order_points:
         print(point)
     print("Point sugest: {}".format(order_points[-1]))
+    print("Count of poins%d"%(len(points)))
         
